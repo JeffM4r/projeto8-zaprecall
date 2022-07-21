@@ -1,10 +1,12 @@
 import React from "react";
 import WelcomeScreen from "./WelcomeScreen";
+import QuestionsPage from "./QuestionsPage";
+
 
 function App() {
     return (
         <>
-            <WelcomeScreen />
+            <QuestionsPage/>           
         </>
     );
 }
