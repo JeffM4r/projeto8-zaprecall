@@ -1,16 +1,17 @@
 import React from "react";
+import logo from "../assets/imgs/logo.png"
 
-function WelcomeScreen() {
+function WelcomeScreen({changePage, setChangePage}) {
     return (
         <>
             <div className="logo">
-                <img src="./imgs/logo.png"/>
+                <img src={logo}/>
             </div>
             <div className="Name">
                 <h1>ZapRecall</h1>
             </div>
             <div className="startButton">
-                <button>Iniciar Recall!!</button>
+                <button onClick={() => setChangePage(!changePage)}>Iniciar Recall!!</button>
             </div>
         </>
     )

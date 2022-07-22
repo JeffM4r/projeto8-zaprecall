@@ -26,6 +26,9 @@ button{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
 }
+button:hover{
+    cursor: pointer;
+}
 
 .logo > img{
     height: 161px;
@@ -42,7 +45,7 @@ button{
 
 .logoName{
     display: flex;
-    position: fixed;
+    position: absolute;
     top: 30px;
 }
 
@@ -55,6 +58,7 @@ button{
 .questions{
     display: flex;
     flex-direction: column;
+    top: 100px;
 }
 
 .question{

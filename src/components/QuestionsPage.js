@@ -1,11 +1,12 @@
 import React from "react";
+import smallLogo from "../assets/imgs/logo-pequeno.png"
 
-function QuestionsPage(){
+function QuestionsPage() {
     return (
         <>
             <div className="logoName">
-                <img src="./imgs/logo-pequeno.png" />
-                <h1>ZapRecall</h1>                
+                <img src={smallLogo} />
+                <h1>ZapRecall</h1>
             </div>
             <div className="questions">
                 <div className="question"><p>Pergunta 1</p> <ion-icon name="play-outline"></ion-icon></div>
