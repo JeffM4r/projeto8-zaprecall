@@ -15,7 +15,7 @@ h1{
     margin-bottom: 30px;
 }
 
-button{
+.startButton{
     height: 54px;
     width: 246px;
     font-family: 'Recursive', sans-serif;
@@ -75,6 +75,58 @@ button:hover{
     font-weight: 700;
     font-size: 16px;
 }
+.question > ion-icon:hover{
+    cursor: pointer;
+}
+
+.questionShown, .questionAnswered{
+    height: 131px;
+    width: 85vw;
+    background-color: #FFFFD4;
+    max-width: 700px;
+    margin: 10px 0px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    position: relative;
+}
+.questionShown > p, .questionAnswered > p{
+    margin-top:18px;
+}
+.questionShown > img{
+    position:absolute;
+    bottom: 8px;
+    right: 10px;
+}
+.questionShown > img:hover{
+    cursor: pointer;
+}
+
+.options{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.options > button{
+    width: 85px;
+    height: 37px;
+    border: 0px;
+}
+.right,.wrong,.almost{
+    border-radius: 5px;
+}
+.right{
+    background-color: #2FBE34;
+}
+.wrong{
+    background-color: #FF3030;
+}
+.almost{
+    background-color: #FF922E;
+}
 
 p{
     margin-left: 15px; 
@@ -97,4 +149,37 @@ p{
     justify-content: center;
     font-size: 18px;
     font-weight: 400;
+    display: flex;
+    flex-direction: column;
+}
+
+.score > div{
+    font-size: 23px;
+    margin-top: 3px;
+}
+.score > p{
+    margin-top: 14px;
+}
+
+.finished{
+    height: 171px;
+}
+
+.text{
+    width: 90vw;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+}
+
+.WrongRight{
+    margin-bottom: 14px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.WrongRight > img{
+    height: 23px;
+    width: 23px;
+    margin-right: 12px;
 }

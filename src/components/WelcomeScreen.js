@@ -10,8 +10,8 @@ function WelcomeScreen({changePage, setChangePage}) {
             <div className="Name">
                 <h1>ZapRecall</h1>
             </div>
-            <div className="startButton">
-                <button onClick={() => setChangePage(!changePage)}>Iniciar Recall!!</button>
+            <div className="startZap">
+                <button className="startButton" onClick={() => setChangePage(!changePage)}>Iniciar Recall!!</button>
             </div>
         </>
     )
