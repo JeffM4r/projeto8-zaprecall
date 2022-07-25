@@ -98,13 +98,17 @@ function Question({ question, answer, number, clicked, setClicked, answeredNumbe
 
 function Questions({ answeredNumber, setAnsweredNumber, setIconsScore, iconsScore, setFinishedCLass, setFinishedText, setCongratulations}) {
     let allQuestions = [{ question: "O que é JSX?", answer: "JSX é uma sintaxe para escrever HTML dentro do JS" }, { question: "O React é __", answer: "uma biblioteca JavaScript para construção de interfaces" },
-    { question: "Componentes devem iniciar com __ ", answer: "letra maiúscula" }, { question: "Podemos colocar __ dentro do JSX", answer: "expressões" }]
+    { question: "Componentes devem iniciar com __ ", answer: "letra maiúscula" }, { question: "Podemos colocar __ dentro do JSX", answer: "expressões" }, 
+    { question: "O ReactDOM nos ajuda __ ", answer: "interagindo com a DOM para colocar componentes React na mesma" }, { question: "Usamos o npm para __", answer: "gerenciar os pacotes necessários e suas dependências" }, 
+    { question: "Usamos props para __", answer: "passar diferentes informações para componentes " }, { question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }]
+
+    const randomArray = allQuestions.sort(() => Math.random() - 0.5)
 
     const [clicked, setClicked] = React.useState(false)
 
     return (
         <div className="questions">
-            {allQuestions.map((question, index) => <Question question={question.question} answer={question.answer} number={index} clicked={clicked} setClicked={setClicked} answeredNumber={answeredNumber} setAnsweredNumber={setAnsweredNumber} iconsScore={iconsScore} setIconsScore={setIconsScore} setFinishedCLass={setFinishedCLass} setFinishedText={setFinishedText} setCongratulations={setCongratulations} key={index} />)}
+            {randomArray.slice(0, 4).map((question, index) => <Question question={question.question} answer={question.answer} number={index} clicked={clicked} setClicked={setClicked} answeredNumber={answeredNumber} setAnsweredNumber={setAnsweredNumber} iconsScore={iconsScore} setIconsScore={setIconsScore} setFinishedCLass={setFinishedCLass} setFinishedText={setFinishedText} setCongratulations={setCongratulations} key={index} />)}
         </div>
     )
 }

@@ -111,6 +111,7 @@ button:hover{
     justify-content: space-around;
 }
 .options > button{
+    font-family: 'Recursive', sans-serif;
     width: 85px;
     height: 37px;
     border: 0px;
