@@ -1,11 +1,16 @@
 import React from "react";
 import arrow from "../assets/imgs/setinha.png";
 
-function Question({ question, answer, number, clicked, setClicked }) {
+function Question({ question, answer, number, clicked, setClicked, answeredNumber, setAnsweredNumber, setIconsScore, iconsScore, setFinishedCLass, setFinishedText, setCongratulations}) {
 
     const [card, setCard] = React.useState(true);
     const [showingQuestion, setShowingQuestion] = React.useState(false);
     const [showingAnswer, setShowingAnswer] = React.useState(false);
+    const [textDecoration, setTextDecoration] = React.useState(null);
+    const [removeIcon, setRemoveIcon] = React.useState(false)
+    const [rightIcon, setRightIcon] = React.useState(false);
+    const [almostDidntRemenberIcon, setAlmostDidntRemenberIcon] = React.useState(false)
+    const [didntRemeberIcon, setDidntRemeberIcon] = React.useState(false)
 
     function showQuestion() {
         if (clicked) {
@@ -25,24 +30,55 @@ function Question({ question, answer, number, clicked, setClicked }) {
         setShowingAnswer(!showingAnswer)
         setCard(!card)
         setClicked(!clicked)
+        setAnsweredNumber(answeredNumber + 1)
+        setTextDecoration({ textDecoration: "line-through", color: "#FF3030" })
+        setDidntRemeberIcon(!didntRemeberIcon)
+        setRemoveIcon(!removeIcon)
+        setIconsScore(iconsScore => [...iconsScore, <ion-icon name="close-circle" style={{ color: "#FF3030" }} ></ion-icon>])
+        setCongratulations(false)
+        if(answeredNumber == 3){
+            setFinishedCLass("score finished")
+            setFinishedText(true)
+        }
     }
     function almostDidntRemenber() {
         setShowingAnswer(!showingAnswer)
         setCard(!card)
         setClicked(!clicked)
+        setAnsweredNumber(answeredNumber + 1)
+        setTextDecoration({ textDecoration: "line-through", color: "#FF922E" })
+        setAlmostDidntRemenberIcon(!almostDidntRemenberIcon)
+        setRemoveIcon(!removeIcon)
+        setIconsScore(iconsScore => [...iconsScore, <ion-icon name="help-circle" style={{ color: "#FF922E" }}></ion-icon>])
+        if(answeredNumber == 3){
+            setFinishedCLass("score finished")
+            setFinishedText(true)
+        }
     }
     function remembered() {
         setShowingAnswer(!showingAnswer)
         setCard(!card)
         setClicked(!clicked)
+        setAnsweredNumber(answeredNumber + 1)
+        setTextDecoration({ textDecoration: "line-through", color: "#2FBE34" })
+        setRightIcon(!rightIcon)
+        setRemoveIcon(!removeIcon)
+        setIconsScore(iconsScore => [...iconsScore, <ion-icon name="checkmark-circle" style={{ color: "#2FBE34" }}></ion-icon>])
+        if(answeredNumber == 3){
+            setFinishedCLass("score finished")
+            setFinishedText(true)
+        }
     }
 
 
     return (
         <>
             <div className="question" style={card ? { display: "flex" } : { display: "none" }}>
-                <p>Pergunta {number + 1}</p>
-                <ion-icon name="play-outline" onClick={() => { showQuestion() }}></ion-icon>
+                <p style={textDecoration}>Pergunta {number + 1}</p>
+                <ion-icon name="play-outline" onClick={() => { showQuestion() }} style={removeIcon ? { display: "none" } : {}}></ion-icon>
+                <ion-icon name="checkmark-circle" style={rightIcon ? { color: "#2FBE34", display: "initial" } : { display: "none" }}></ion-icon>
+                <ion-icon name="help-circle" style={almostDidntRemenberIcon ? { color: "#FF922E", display: "initial" } : { display: "none" }}></ion-icon>
+                <ion-icon name="close-circle" style={didntRemeberIcon ? { color: "#FF3030", display: "initial" } : { display: "none" }}></ion-icon>
             </div>
             <div className="questionShown" style={showingQuestion ? { display: "initial" } : { display: "none" }}>
                 <p>{question}</p>
@@ -60,7 +96,7 @@ function Question({ question, answer, number, clicked, setClicked }) {
     )
 }
 
-function Questions() {
+function Questions({ answeredNumber, setAnsweredNumber, setIconsScore, iconsScore, setFinishedCLass, setFinishedText, setCongratulations}) {
     let allQuestions = [{ question: "O que é JSX?", answer: "JSX é uma sintaxe para escrever HTML dentro do JS" }, { question: "O React é __", answer: "uma biblioteca JavaScript para construção de interfaces" },
     { question: "Componentes devem iniciar com __ ", answer: "letra maiúscula" }, { question: "Podemos colocar __ dentro do JSX", answer: "expressões" }]
 
@@ -68,7 +104,7 @@ function Questions() {
 
     return (
         <div className="questions">
-            {allQuestions.map((question, index) => <Question question={question.question} answer={question.answer} number={index} clicked={clicked} setClicked={setClicked} key={index} />)}
+            {allQuestions.map((question, index) => <Question question={question.question} answer={question.answer} number={index} clicked={clicked} setClicked={setClicked} answeredNumber={answeredNumber} setAnsweredNumber={setAnsweredNumber} iconsScore={iconsScore} setIconsScore={setIconsScore} setFinishedCLass={setFinishedCLass} setFinishedText={setFinishedText} setCongratulations={setCongratulations} key={index} />)}
         </div>
     )
 }

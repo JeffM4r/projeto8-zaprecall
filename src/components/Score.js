@@ -1,24 +1,58 @@
 import partyEmote from "../assets/imgs/party.png";
 import sadEmote from "../assets/imgs/sad.png";
 
-function Score() {
+function Good(){
     return (
-        <div className="score">
-            {/* <div className="WrongRight">
+        <>
+            <div className="WrongRight">
                 <img src={partyEmote} />
                 Parabéns!
             </div>
             <div className="text">
                 <p>Você não esqueceu de nenhum flashcard! </p>
-            </div> */}
+            </div>
+        </>
+    )
+}
+
+function Bad(){
+    return (
+
+        <>
+            <div className="WrongRight">
+                <img src={sadEmote} />
+                Putz...
+            </div>
+            <div className="text">
+                <p>Ainda faltam alguns...</p>
+                <p>Mas não desanime!</p>
+            </div>
+        </>
+
+    )
+}
+
+function Contgratulations({ congratulations }) {
+    console.log(congratulations)
+    return(
+        <>
+            {congratulations? <Good/> : <Bad/> }
+        </>
+    )
+}
+
+
+
+
+function Score({ answeredNumber, iconsScore, finishedClass, finishedText, congratulations }) {
+    return (
+        <div className={finishedClass}>
+            {finishedText ? <Contgratulations congratulations={congratulations}/> : ""}
             <p>
-                4/4 concluidos
+                {answeredNumber}/4 concluidos
             </p>
             <div>
-                <ion-icon name="close-circle" style={{ color: "#FF3030" }} ></ion-icon>
-                <ion-icon name="checkmark-circle" style={{ color: "#2FBE34" }}></ion-icon>
-                <ion-icon name="checkmark-circle" style={{ color: "#2FBE34" }}></ion-icon>
-                <ion-icon name="help-circle" style={{ color: "#FF922E" }}></ion-icon>
+                {iconsScore}
             </div>
         </div>
     )
